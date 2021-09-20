@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+html, body {
+  box-sizing: border-box;
+  background: #f5f5f5;
 }
 
 a, a:hover, a:visited, a:focus {
@@ -13,15 +14,23 @@ a, a:hover, a:visited, a:focus {
   padding: 20px;
   box-shadow: 0px 0px 3px 0px black;
   margin-bottom: 20px;
-  background: linen;
+  background: white;
   
 }
 .posts-div .post-container {
   padding: 20px;
+  padding-bottom: 5px;
 }
 
 .post-container span {
   color: #7b7b7b;
+}
+
+.post-body {
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px black;
 }
 
 .posts-div:not(.singlepost){
@@ -34,7 +43,7 @@ a, a:hover, a:visited, a:focus {
 
 .posts-title {
   text-transform: capitalize;
-  font-weight: 400;
+  font-weight: 600;
   color: black;
 }
 
@@ -80,7 +89,7 @@ a, a:hover, a:visited, a:focus {
   font-size: 14px;
 }
 
-.search-box-div input:focus ~ label,.search-box-div input:valid ~ label {
+.search-box-div input:focus ~ label,.search-box-div input.has-content ~ label {
   transform: translateY(-40px) translateX(-15px) scale(0.75);
   background-color: #000000ba;
   color: white;
@@ -90,53 +99,26 @@ a, a:hover, a:visited, a:focus {
 
 .up-svg svg{
   transform: rotate(180deg);
-  color: #131314;
+  color: white;
+  width: 20px;
+  height: 20px;
 }
 
 .down-svg svg{
   transform: rotate(0deg);
-  color: rgb(8, 8, 85);
+  width: 20px;
+  height: 20px;
 }
 
 .show-more-span {
   vertical-align: middle;
 }
 
-.show-more-button{
-  border: none;
-  background-color: unset;
-  outline: unset;
-  cursor: pointer;
-}
-
-.show-more-button > * {
-  pointer-events: none;
-}
-
-.show-more-button.clicked {
-  color: rgb(8, 8, 85); 
-}
-
-.show-more-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 3px rgb(8, 8, 85); 
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-.show-more-button:hover:after { 
-  transform: scaleX(1); 
-}
-
-.show-more-button:hover {
-  color: rgb(8, 8, 85); 
-  font-weight: 600;
-}
-
-
 .comments-list {
   display: none;
+  background: whitesmoke;
+  border-radius: 7px;
+  box-shadow: 0px 0px 2px black;
 }
 
 .comments-list.show {
@@ -144,14 +126,18 @@ a, a:hover, a:visited, a:focus {
 }
 
 .comments {
-  border-bottom: 1px solid black;
-  padding: 5px 25px;
+  padding: 5px 15px;
   text-align: justify;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 14px;
 }
 
-.comments-list .comments:last-of-type {
+.comments p {
+  padding: 10px;
+  margin: 0px;
+  border-bottom: 1px solid rgba(75, 74, 74, 0.74);
+}
+
+.comments-list .comments:last-of-type p{
   border-bottom: none;
 }
 
@@ -159,22 +145,31 @@ a, a:hover, a:visited, a:focus {
   padding: 50px;
 }
 
-.link-back-to {
+.link-back-to, .show-more-button {
   background-color: rgb(8 8 85 / 82%);
   padding: 10px 15px;
   color: white!important;
   box-shadow: 0px 0px 5px 2px #b8aca1;
   display: inline-block;
   margin-bottom: 10px;
+  outline: unset;
+  border: none;
+  cursor: pointer;
+
 }
 
-.link-back-to:hover {
-  background-color:rgb(8, 8, 85);
+.link-back-to:hover, .show-more-button:hover, .show-more-button.clicked {
+  background-color:rgb(6, 6, 66);
+}
+
+.show-more-button > * {
+  pointer-events: none;
 }
 
 .loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #243652;
+  box-shadow: 0px 0px 3px black;
+  border: 16px solid #ffffff;
+  border-top: 16px solid rgb(8 8 85 / 82%);
   border-radius: 50%;
   width: 150px;
   height: 150px;

@@ -1,14 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import {Button, PostContainer} from './partials';
 import PropTypes from 'prop-types';
-
 
 export default class PostList extends React.Component {
     state = {
         targetIDs: [],
-        show: false
+        showID: [],
     };
 
     componentDidMount () {
@@ -16,17 +15,25 @@ export default class PostList extends React.Component {
     };
 
     handleOnClickButton = (e) => {
-        this.setState({show: !this.state.show});
+        let buttonId = e.target.getAttribute('id');
+        let newButtonIds = [...this.state.showID];
 
-        let targetID = parseInt(e.target.previousSibling.getAttribute('id'));
+        if (newButtonIds.includes(buttonId)) {
+            newButtonIds = newButtonIds.filter(e => e !== buttonId)
+        } else {
+          newButtonIds.push(buttonId);
+        }
+        this.setState({showID: newButtonIds});
+
+        let targetId = parseInt(e.target.previousSibling.getAttribute('id'));
         let newList = [...this.state.targetIDs];
         
-        if (newList.includes(targetID)) {
-          newList = newList.filter(e => e !== targetID)
+        if (newList.includes(targetId)) {
+          newList = newList.filter(e => e !== targetId)
         } else {
-            newList.push(targetID);
+            newList.push(targetId);
         }
-          this.setState({targetIDs: newList});
+        this.setState({targetIDs: newList});
     };
 
     render() {
@@ -34,7 +41,7 @@ export default class PostList extends React.Component {
         return (                                                                                                                                                          
             <div>
 
-                {this.props.posts.map((post, i)=> {
+                {this.props.posts.map(post=> {
 
                     const { userId } = post;
                     const { id } = post;
@@ -55,13 +62,13 @@ export default class PostList extends React.Component {
                                     propsname={"PostContainer"}
                                 />
                             </Link>
-                            <Button class = {`show-more-button ${this.state.show ? 'clicked': ''}` } 
+                            <Button button_id={`button_${id}`} class = {`show-more-button ${this.state.showID.includes(`button_${id}`) ? 'clicked': ''}` } 
                                 handleOnClickButton = {this.handleOnClickButton}
                                 childrenText = {
                                    <span> Show Comments </span> 
                                 }
                                 childrenSvg = {
-                                    <span className= {`show-more-span ${this.state.show ? 'up-svg': 'down-svg'}` }><IoIosArrowDropdownCircle/></span>
+                                    <span className= {`show-more-span ${this.state.showID.includes(`button_${id}`) ? 'up-svg': 'down-svg'}` }><MdKeyboardArrowDown/></span>
                                 }
                                 propsconsole = {this.props.propsconsole} 
                                 propsname={"Button"}

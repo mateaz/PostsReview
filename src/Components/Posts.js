@@ -46,6 +46,10 @@ export default class Posts extends React.Component  {
         e.preventDefault();
         let value = e.target.value;
 
+        if (e.target.value) {
+            e.target.classList.add('has-content');
+        } else e.target.classList.remove('has-content');
+
         this.setState({searchedValue: value});
        
         const filteredUser = this.state.users.filter((item) => {

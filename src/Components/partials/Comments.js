@@ -9,7 +9,7 @@ export default function Comments ({ comments, propsconsole, propsname }){
 
     return (
         <div className="comments text-capitalize">
-            {comments}
+            <p>{comments}</p>
         </div>
     )
 };

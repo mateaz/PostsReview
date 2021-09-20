@@ -44,7 +44,7 @@ export default class SinglePost extends React.Component {
       return(
             <div>
                
-                <Link className="link-back-to" to="/posts">Back To Index</Link>
+                <Link className="link-back-to" to="/posts">Back to all posts</Link>
                 {this.state.isLoading ? 
                     <Loader 
                         propsconsole = {this.props.propsconsole} 

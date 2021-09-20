@@ -6,7 +6,6 @@ export default class Search extends React.Component {
     componentDidMount () {
         console.log(`${this.props.propsconsole} ${this.props.propsname}`);
     };
-
     
     render () {
         return (
@@ -16,7 +15,7 @@ export default class Search extends React.Component {
                         value={this.props.value} onChange={this.props.onChange}
                         type='text'
                         />
-                    <label>Search by user data</label>
+                    <label>Search by username</label>
                 </div>
             </form>
     )

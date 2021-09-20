@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import {Posts, SinglePost} from './Components';
 import './App.css';
-
+import PropTypes from 'prop-types';
 
 function App ({propshello, propsname}) {
   propshello= 'Hello From';
@@ -27,3 +27,8 @@ function App ({propshello, propsname}) {
 }
 
 export default App;
+
+App.propTypes={
+  propshello: PropTypes.string, 
+  propsname: PropTypes.string,
+};
