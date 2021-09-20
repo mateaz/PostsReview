@@ -1,6 +1,6 @@
 import React from 'react';
 import Comments from './Comments';
-
+import PropTypes from 'prop-types';
 
 export default class PostContainer extends React.Component {
 
@@ -26,4 +26,15 @@ export default class PostContainer extends React.Component {
         </div>
     )
   }
-}
+};
+
+PostContainer.propTypes={
+  propsconsole: PropTypes.string, 
+  propsname: PropTypes.string,
+  user: PropTypes.array,
+  title: PropTypes.string, 
+  body: PropTypes.string, 
+  clickedId: PropTypes.array, 
+  postId: PropTypes.number, 
+  comments: PropTypes.array,
+};

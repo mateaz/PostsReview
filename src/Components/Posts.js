@@ -1,6 +1,7 @@
 import React from 'react';
 import PostList from './PostsList';
 import {Search, Loader} from './partials';
+import PropTypes from 'prop-types';
 
 export default class Posts extends React.Component  {
     state = {
@@ -9,7 +10,7 @@ export default class Posts extends React.Component  {
         users: [],
         searchedUser: [],
         comments: [],
-        searchedValue: [],
+        searchedValue: '',
         isLoading: true,
     };
 
@@ -88,4 +89,9 @@ export default class Posts extends React.Component  {
             </div>   
         )
     }
-}
+};
+
+Posts.propTypes={
+    propsconsole: PropTypes.string, 
+    propsname: PropTypes.string
+};

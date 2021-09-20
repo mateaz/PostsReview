@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {PostContainer, Loader} from './partials';
-
+import PropTypes from 'prop-types';
 
 export default class SinglePost extends React.Component {
     state = {
@@ -14,12 +14,11 @@ export default class SinglePost extends React.Component {
 
 
     componentDidMount() {
-        console.log(this.props)
-        const { id } = this.props.match.params;
+        const post_id = this.props.match.params.id;
 
         console.log(`${this.props.propsconsole} ${this.props.propsname}`)
 
-        fetch (`https://jsonplaceholder.typicode.com/posts/${id}`)
+        fetch (`https://jsonplaceholder.typicode.com/posts/${post_id}`)
             .then (response => response.json())
             .then (data => {
                 this.setState({post: data, isLoading:false})
@@ -45,7 +44,7 @@ export default class SinglePost extends React.Component {
       return(
             <div>
                
-                <Link className="link-back-to" to="/post">Back To Index</Link>
+                <Link className="link-back-to" to="/posts">Back To Index</Link>
                 {this.state.isLoading ? 
                     <Loader 
                         propsconsole = {this.props.propsconsole} 
@@ -67,4 +66,12 @@ export default class SinglePost extends React.Component {
             </div>
       )
     }
-}
+};
+
+SinglePost.propTypes={
+    propsconsole: PropTypes.string, 
+    propsname: PropTypes.string,
+    match: PropTypes.shape({
+        params: PropTypes.object,
+    }).isRequired,
+};

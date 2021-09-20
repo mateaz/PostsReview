@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Loader extends React.Component {
 
@@ -12,4 +13,9 @@ export default class Loader extends React.Component {
             <div className='loader'></div>
         )
     };
+};
+
+Loader.propTypes={
+    propsconsole: PropTypes.string, 
+    propsname: PropTypes.string
 };

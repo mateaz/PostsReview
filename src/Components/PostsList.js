@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import {Button, PostContainer} from './partials';
-
+import PropTypes from 'prop-types';
 
 
 export default class PostList extends React.Component {
@@ -43,7 +43,7 @@ export default class PostList extends React.Component {
 
                     return (
                         <div key={id} className="posts-div">
-                            <Link to={`/posts/${id}`} id={id} >
+                            <Link to={`/post/${id}`} id={id} >
                                 <PostContainer 
                                     postId = {id}
                                     body = {body}
@@ -71,4 +71,12 @@ export default class PostList extends React.Component {
                 })}
             </div>
         )}
+};
+
+PostList.propTypes={
+    propsconsole: PropTypes.string, 
+    propsname: PropTypes.string,
+    posts: PropTypes.array,
+    user: PropTypes.array,
+    comments: PropTypes.array
 };
